@@ -6,25 +6,28 @@ class Program {
   private static float changes = 0;
   
   public static void Main (string[] args) {
-    
-    if(args[0] == null){
-      Console.WriteLine("Falta por poner la secuencia 1.");
-      Console.WriteLine("USO:");
-      Console.WriteLine("sequence.exe '[SECUENCIA 1]' [SECUENCIA 2]'");
-      return;
-    }
+    if(args == null) return;
 
-    if(args[1] == null){
-      Console.WriteLine("Falta por poner la secuencia 2.");
-      Console.WriteLine("USO");
-      Console.WriteLine("sequence '[SECUENCIA 1]' [SECUENCIA 2]'");
-      return;
+    switch (args.Length)
+    {
+      case 0:
+        Console.WriteLine("Falta por poner la secuencia 1.");
+        Console.WriteLine("USO:");
+        Console.WriteLine("sequence.exe '[SECUENCIA 1]' [SECUENCIA 2]'");
+        return;
+      case 1:
+        Console.WriteLine("Falta por poner la secuencia 2.");
+        Console.WriteLine("USO:");
+        Console.WriteLine("sequence '[SECUENCIA 1]' [SECUENCIA 2]'");
+        return;
     }
     
     oSequence = args[0];
+    oSequence = oSequence.Trim();
     oSeqChar = oSequence.ToCharArray();
 
     nSequence = args[1];
+    nSequence = nSequence.Trim();
     nSeqChar = nSequence.ToCharArray();
     if(oSequence.Length != nSequence.Length){
       Console.WriteLine("Las dos secuencias no tienen la misma longitud.");
